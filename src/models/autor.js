@@ -63,6 +63,13 @@ class Autor {
     const resultado = await this.criar();
     return resultado;
   }
+
+  static async pegaLivrosPorAutor(autorId) {
+    if (!autorId) throw new Error('autorId é obrigatório para esta operação.');
+    const resultado = await db('livros')
+      .where({ autor_id: autorId });
+    return resultado;
+  }
 }
 
 export default Autor;
